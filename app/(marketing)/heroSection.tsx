@@ -135,8 +135,8 @@ export default function HeroSection() {
 
           {/* Subtitle */}
           <p className="text-xl md:text-2xl text-foreground/80 retro-font max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            🧱 Rumo a 2026: Juntos na reforma da nossa nova sede! 
-            Cada tijolo doado nos aproxima do sonho de um espaço melhor para todos. 🏗️
+            Rumo a 2026: Juntos na reforma da nossa nova sede! 
+            Cada tijolo doado nos aproxima do sonho de um espaço melhor para todos.
           </p>
 
           {/* Stats - pixel style boxes */}
