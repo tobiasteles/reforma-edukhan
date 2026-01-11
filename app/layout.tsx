@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Kode_Mono } from "next/font/google"; // Importando a Kode Mono
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 
 // Configuração da Kode Mono
 const kodeMono = Kode_Mono({
@@ -25,6 +26,7 @@ export default function RootLayout({
         className={`${kodeMono.variable} font-mono antialiased`}
       >
         {children}
+        <Analytics />
       </body>
     </html>
   );
