@@ -1,13 +1,13 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import {  HardHat, Heart, MessageCircle } from "lucide-react";
+import { HardHat, Heart, MessageCircle, ChevronDown, Globe } from "lucide-react";
 import PixelWorker from "./pixelWorker";
 
 const WHATSAPP_NUMBER = "5561981311414";
 
 export default function HeroSection() {
-    const scrollToMaterials = () => {
+  const scrollToMaterials = () => {
     document.getElementById("materials")?.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -15,170 +15,137 @@ export default function HeroSection() {
     const message = encodeURIComponent("Olá! Gostaria de saber mais sobre a campanha de doações de material para o Edukhan.");
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, "_blank");
   };
-    return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Sky gradient background */}
-      <div className="absolute inset-0 hero-gradient" />
+
+  const openHome = () => {
+    window.open("https://edukhan.ong.br", "_blank");
+  };
+
+  return (
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden font-mono pt-12 pb-24">
+      {/* Backgrounds */}
+      <div className="absolute inset-0 hero-gradient opacity-95" />
+      <div className="absolute bottom-0 left-0 right-0 h-[40%] brick-pattern opacity-20" />
       
-      {/* Clouds - pixel style */}
-      <div className="absolute top-20 left-[10%] opacity-90">
+      {/* --- CENÁRIO RESTAURADO --- */}
+      
+      {/* Nuvens */}
+      <div className="absolute top-16 left-[10%] opacity-60 animate-float">
         <div className="flex">
-          <div className="w-8 h-4 bg-white rounded-full" />
-          <div className="w-12 h-6 bg-white rounded-full -ml-2 -mt-1" />
-          <div className="w-8 h-4 bg-white rounded-full -ml-2" />
+          <div className="w-12 h-6 bg-white rounded-full shadow-lg" />
+          <div className="w-16 h-8 bg-white rounded-full -ml-4 -mt-2 shadow-lg" />
         </div>
       </div>
-      <div className="absolute top-32 right-[15%] opacity-80">
-        <div className="flex">
-          <div className="w-6 h-3 bg-white rounded-full" />
-          <div className="w-10 h-5 bg-white rounded-full -ml-2 -mt-1" />
-          <div className="w-6 h-3 bg-white rounded-full -ml-2" />
-        </div>
+      <div className="absolute top-32 right-[10%] opacity-40 animate-bounce-slow">
+        <div className="w-24 h-10 bg-white rounded-full shadow-lg" />
       </div>
-      <div className="absolute top-48 left-[30%] opacity-70">
-        <div className="flex">
-          <div className="w-10 h-5 bg-white rounded-full" />
-          <div className="w-14 h-7 bg-white rounded-full -ml-3 -mt-1" />
-          <div className="w-8 h-4 bg-white rounded-full -ml-2" />
-        </div>
+      <div className="absolute top-60 left-[25%] opacity-30 hidden md:block">
+        <div className="w-16 h-8 bg-white rounded-full shadow-lg" />
       </div>
 
-      {/* Brick wall background at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-[35%] brick-pattern opacity-90" />
-      
-      {/* Construction site elements */}
+      {/* Base da Construção */}
       <div className="absolute bottom-0 left-0 right-0">
-        {/* Ground/dirt */}
-        <div className="h-16 bg-linear-to-t from-amber-800 to-amber-700" />
+        <div className="h-24 bg-edukhan-green border-t-8 border-edukhan-green/30" />
+        <div className="absolute bottom-24 left-0 right-0 h-6 construction-stripes shadow-xl" />
         
-        {/* Construction stripes warning bar */}
-        <div className="absolute bottom-16 left-0 right-0 h-4 construction-stripes" />
-        
-        {/* Scaffolding left */}
-        <div className="absolute bottom-16 left-8 md:left-24">
-          <div className="w-2 h-40 bg-gray-600" />
-          <div className="absolute left-8 top-0 w-2 h-40 bg-gray-600" />
-          <div className="absolute left-0 top-8 w-10 h-2 bg-gray-500" />
-          <div className="absolute left-0 top-20 w-10 h-2 bg-gray-500" />
-          <div className="absolute left-0 top-32 w-10 h-2 bg-gray-500" />
-          {/* Worker on scaffolding */}
-          <div className="absolute left-1 top-6">
+        {/* Andaime Esquerdo */}
+        <div className="absolute bottom-32 left-6 md:left-20">
+          <div className="w-2 h-44 bg-gray-700/40" />
+          <div className="absolute left-10 top-0 w-2 h-44 bg-gray-700/40" />
+          <div className="absolute left-2 top-4">
             <PixelWorker type="hammering" />
           </div>
         </div>
 
-        {/* Scaffolding right */}
-        <div className="absolute bottom-16 right-8 md:right-24">
-          <div className="w-2 h-48 bg-gray-600" />
-          <div className="absolute left-8 top-0 w-2 h-48 bg-gray-600" />
-          <div className="absolute left-0 top-12 w-10 h-2 bg-gray-500" />
-          <div className="absolute left-0 top-28 w-10 h-2 bg-gray-500" />
-          <div className="absolute left-0 top-44 w-10 h-2 bg-gray-500" />
-          {/* Worker on scaffolding */}
-          <div className="absolute left-1 top-10">
+        {/* Andaime Direito */}
+        <div className="absolute bottom-32 right-6 md:right-24">
+          <div className="w-2 h-52 bg-gray-700/40" />
+          <div className="absolute left-10 top-0 w-2 h-52 bg-gray-700/40" />
+          <div className="absolute left-2 top-8">
             <PixelWorker type="waving" flip />
           </div>
         </div>
-
-        {/* Workers on ground */}
-        <div className="absolute bottom-20 left-[25%] hidden md:block">
-          <PixelWorker type="carrying" />
-        </div>
-        <div className="absolute bottom-20 right-[30%] hidden md:block">
-          <PixelWorker type="walking" flip />
-        </div>
-
-        {/* Brick piles */}
-        <div className="absolute bottom-16 left-[40%] flex flex-col">
-          <div className="flex">
-            <div className="w-4 h-2 bg-red-700 border border-red-900" />
-            <div className="w-4 h-2 bg-red-600 border border-red-800" />
-          </div>
-          <div className="flex -mt-px">
-            <div className="w-4 h-2 bg-red-600 border border-red-800" />
-            <div className="w-4 h-2 bg-red-700 border border-red-900" />
-            <div className="w-4 h-2 bg-red-600 border border-red-800" />
-          </div>
-        </div>
-
-        {/* Cement mixer */}
-        <div className="absolute bottom-16 right-[40%] hidden md:block">
-          <div className="w-8 h-6 bg-yellow-500 rounded-full border-2 border-yellow-700" />
-          <div className="w-10 h-2 bg-gray-600 -mt-1 -ml-px" />
-          <div className="flex justify-between px-1">
-            <div className="w-2 h-2 bg-gray-800 rounded-full" />
-            <div className="w-2 h-2 bg-gray-800 rounded-full" />
-          </div>
-        </div>
       </div>
 
-      {/* Scanlines overlay for retro effect */}
-      <div className="absolute inset-0 scanlines pointer-events-none" />
+      {/* --- CONTEÚDO PRINCIPAL --- */}
 
-      <div className="relative z-10 container mx-auto px-4 text-center">
-        <div className="max-w-4xl mx-auto space-y-8">
+      <div className="relative z-10 container mx-auto px-4 flex grow items-center justify-center">
+        <div className="max-w-4xl mx-auto flex flex-col items-center text-center space-y-8 mt-[-2vh]">
+          
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-yellow-400 border-4 border-yellow-600 px-4 py-2 text-foreground text-sm pixel-font animate-fade-in shadow-button mt-12">
-            <HardHat className="w-5 h-5" />
-            <span className="text-xs">CAMPANHA 2026</span>
+          <div className="inline-flex items-center gap-3 bg-edukhan-yellow border-4 border-foreground px-6 py-2 shadow-button -rotate-2 mb-2 animate-in fade-in duration-700">
+            <HardHat className="w-6 h-6 text-foreground" />
+            <span className="text-sm font-black text-foreground uppercase tracking-widest">
+              Campanha Reforma 2026
+            </span>
           </div>
 
-          {/* Main title */}
-          <h1 className="text-2xl md:text-4xl lg:text-5xl pixel-font text-foreground leading-tight animate-fade-in pixel-text-shadow" style={{ animationDelay: "0.1s", lineHeight: "1.4" }}>
-            CONSTRUINDO O{" "}
-            <span className="relative inline-block">
-              <span className="relative z-10 text-primary">FUTURO</span>
-              <span className="absolute bottom-0 left-0 w-full h-2 bg-yellow-400" />
-            </span>{" "}
-            DA EDUKHAN
+          {/* Título */}
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1] drop-shadow-[0_8px_0_rgba(0,0,0,0.2)]">
+            CONSTRUINDO O <br />
+            <span className="text-edukhan-yellow italic uppercase">Futuro</span> <br />
+            DO EDUKHAN
           </h1>
 
-          {/* Subtitle */}
-          <p className="text-xl md:text-2xl text-foreground/80 retro-font max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            Rumo a 2026: Juntos na reforma da nossa nova sede! 
-            Cada tijolo doado nos aproxima do sonho de um espaço melhor para todos.
+          {/* Subtítulo */}
+          <p className="text-lg md:text-2xl text-white font-bold max-w-2xl mx-auto bg-primary/20 backdrop-blur-md p-6 rounded-lg border-2 border-white/20">
+            Juntos na reforma da nossa nova sede. Cada tijolo doado constrói um sorriso! 🧱❤️
           </p>
 
-          {/* Stats - pixel style boxes */}
-          <div className="flex flex-wrap justify-center gap-4 md:gap-8 py-8 animate-fade-in" style={{ animationDelay: "0.3s" }}>
-            <div className="bg-card border-4 border-foreground/20 p-4 shadow-card">
-              <div className="text-3xl md:text-4xl pixel-font text-primary">2026</div>
-              <div className="text-foreground/60 text-sm retro-font mt-1">INAUGURAÇÃO</div>
+          {/* Cards de Status */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full max-w-3xl">
+            <div className="pixel-card bg-white py-6 px-4 flex flex-col items-center group hover:scale-105 transition-all">
+              <span className="text-4xl font-black text-primary">2026</span>
+              <span className="text-xs font-bold text-muted-foreground uppercase">Inauguração</span>
             </div>
-            <div className="bg-card border-4 border-foreground/20 p-4 shadow-card">
-              <div className="text-3xl md:text-4xl pixel-font text-yellow-500">6</div>
-              <div className="text-foreground/60 text-sm retro-font mt-1">CATEGORIAS</div>
+            <div className="pixel-card bg-white py-6 px-4 flex flex-col items-center group hover:scale-105 transition-all border-edukhan-yellow">
+              <span className="text-4xl font-black text-primary">06</span>
+              <span className="text-xs font-bold text-muted-foreground uppercase">Categorias</span>
             </div>
-            <div className="bg-card border-4 border-foreground/20 p-4 shadow-card">
-              <div className="text-3xl md:text-4xl pixel-font text-green-600">100+</div>
-              <div className="text-foreground/60 text-sm retro-font mt-1">ITENS</div>
+            <div className="pixel-card bg-white py-6 px-4 flex flex-col items-center group hover:scale-105 transition-all">
+              <span className="text-4xl font-black text-primary">100+</span>
+              <span className="text-xs font-bold text-muted-foreground uppercase">Itens</span>
             </div>
           </div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in relative -top-10" style={{ animationDelay: "0.4s" }}>
+          {/* Botões Principais */}
+          <div className="flex flex-col items-center w-full pt-4 pb-16 space-y-6">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full">
+              <Button 
+                size="lg" 
+                onClick={scrollToMaterials}
+                className="pixel-btn bg-edukhan-pink hover:bg-edukhan-pink/90 text-white w-full sm:w-auto text-xl h-16 shadow-[6px_6px_0_rgba(0,0,0,0.2)]"
+              >
+                <Heart className="w-6 h-6 fill-white" />
+                DOE MATERIAIS
+              </Button>
+              <Button 
+                variant="outline" 
+                size="lg" 
+                onClick={openWhatsApp}
+                className="pixel-btn bg-white hover:bg-gray-100 text-primary w-full sm:w-auto text-xl h-16 shadow-[6px_6px_0_rgba(0,0,0,0.1)]"
+              >
+                <MessageCircle className="w-6 h-6" />
+                WHATSAPP
+              </Button>
+            </div>
+
+            {/* Botão Página Inicial */}
             <Button 
-              size="lg" 
-              onClick={scrollToMaterials}
-              className="pixel-btn bg-orange-500 hover:bg-orange-600 text-white pixel-font text-xs gap-2"
+              variant="link" 
+              onClick={openHome}
+              className="pixel-btn bg-edukhan-sky hover:bg-edukhan-sky/90 text-white w-full sm:w-auto text-sm h-12 shadow-[4px_4px_0_rgba(0,0,0,0.2)] border-2"
             >
-              <Heart className="w-5 h-5" />
-              VER MATERIAIS
-            </Button>
-            <Button 
-              variant="outline" 
-              size="lg" 
-              onClick={openWhatsApp}
-              className="pixel-btn bg-green-500 hover:bg-green-600 text-white border-green-700 pixel-font text-xs gap-2"
-            >
-              <MessageCircle className="w-5 h-5" />
-              WHATSAPP
+              <Globe className="w-4 h-4" />
+              CONHEÇA O SITE DO EDUKHAN
             </Button>
           </div>
         </div>
+      </div>
 
-       
+      {/* Indicador de Scroll */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-white/50 cursor-pointer hidden md:block" onClick={scrollToMaterials}>
+        <ChevronDown className="w-10 h-10" />
       </div>
     </section>
-    )
+  );
 }

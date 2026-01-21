@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
 
@@ -17,8 +19,8 @@ interface MaterialCardProps {
 
 const WHATSAPP_NUMBER = "5561981311414";
 
-export default function MaterialCard({ material }: MaterialCardProps){
-    const getCategoryEmoji = () => {
+export default function MaterialCard({ material }: MaterialCardProps) {
+  const getCategoryEmoji = () => {
     switch (material.category) {
       case "basico": return "🧱";
       case "estrutural": return "🪵";
@@ -39,32 +41,32 @@ export default function MaterialCard({ material }: MaterialCardProps){
     );
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, "_blank");
   };
-    return (
-        <div className="pixel-card p-4 transition-all duration-200 hover:-translate-y-1">
-      <div className="flex items-start justify-between gap-3">
-        <div className="flex-1">
-          <div className="flex items-center gap-2 mb-2">
-            <span className="text-2xl">{getCategoryEmoji()}</span>
-            <h4 className="pixel-font text-foreground text-xs leading-relaxed">
+
+  return (
+    <div className="pixel-card p-5 bg-white group hover:border-edukhan-sky transition-all duration-200">
+      <div className="flex flex-col gap-4">
+        <div className="flex items-center gap-3">
+          <span className="text-3xl bg-muted p-2 rounded-xl group-hover:bg-edukhan-yellow transition-colors duration-300">
+            {getCategoryEmoji()}
+          </span>
+          <div className="flex-1">
+            <h4 className="font-black text-primary text-base uppercase leading-tight">
               {material.name}
             </h4>
+            <p className="text-foreground/60 text-xs font-bold font-mono">
+              Necessário: <span className="text-primary">{material.quantity_needed.toLocaleString()}</span> {material.unit}
+            </p>
           </div>
-          <p className="retro-font text-muted-foreground text-lg">
-            Precisamos de{" "}
-            <span className="text-primary font-bold">
-              {material.quantity_needed.toLocaleString()}
-            </span>{" "}
-            {material.unit}
-          </p>
         </div>
+
         <Button 
           onClick={handleWhatsAppClick}
-          className="pixel-btn bg-green-500 hover:bg-green-600 text-white border-green-700 pixel-font text-[10px] gap-1 px-3 py-2"
+          className="pixel-btn bg-edukhan-green hover:bg-edukhan-green/90 text-white w-full h-12 text-xs font-black gap-2 shadow-[4px_4px_0_rgba(0,0,0,0.1)]"
         >
-          <MessageCircle className="w-4 h-4" />
-          DOAR
+          <MessageCircle className="w-5 h-5" />
+          EU QUERO DOAR
         </Button>
       </div>
     </div>
-    )
+  );
 }

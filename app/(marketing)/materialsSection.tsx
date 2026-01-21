@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { HardHat } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { useState } from "react";
 import MaterialCard from "./materialCard";
 
@@ -105,28 +105,29 @@ const materialsData: Material[] = [
   { id: "ac2", name: "Lixa ferro n° 100", quantity_needed: 5, unit: "folhas", category: "acabamento" },
 ];
 export default function MaterialsSection() {
-    const [activeCategory, setActiveCategory] = useState<MaterialCategory>("basico");
+  const [activeCategory, setActiveCategory] = useState<MaterialCategory>("basico");
   
   const filteredMaterials = materialsData.filter(m => m.category === activeCategory);
-    return (
-        <section id="materials" className="py-24 bg-background brick-pattern-overlay relative">
+
+  return (
+    <section id="materials" className="py-24 bg-[#FDFDF8] relative overflow-hidden">
+      {/* Detalhe de fundo de tijolos bem suave */}
+      <div className="absolute inset-0 brick-pattern opacity-[0.03] pointer-events-none" />
+
       <div className="container mx-auto px-4 relative z-10">
-        {/* Section header */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 bg-yellow-400 border-4 border-yellow-600 px-4 py-2 shadow-button mb-6">
-            <HardHat className="w-5 h-5 text-foreground" />
-            <span className="pixel-font text-xs text-foreground">LISTA DE MATERIAIS</span>
-          </div>
-          <h2 className="text-xl md:text-3xl pixel-font text-foreground mb-4 pixel-text-shadow leading-relaxed">
-            O QUE PRECISAMOS
+        {/* Cabeçalho da Seção */}
+        <div className="text-center mb-16">
+          
+          <h2 className="text-4xl md:text-6xl font-black text-primary mb-6 drop-shadow-[0_4px_0_rgba(0,0,0,0.1)]">
+            O QUE <span className="text-edukhan-sky">PRECISAMOS</span>
           </h2>
-          <p className="retro-font text-muted-foreground text-xl max-w-2xl mx-auto">
-            Cada item faz diferença! Escolha como contribuir para a construção da nossa nova sede.
+          <p className="text-foreground/70 text-lg md:text-xl max-w-2xl mx-auto font-bold">
+            Cada item faz diferença! Escolha uma categoria abaixo e veja como você pode ajudar a levantar as paredes desse sonho.
           </p>
         </div>
 
-        {/* Category tabs - pixel style */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        {/* Categorias - Estilo de Abas Pixel */}
+        <div className="flex flex-wrap justify-center gap-4 mb-16">
           {categoryOrder.map((categoryKey) => {
             const config = categoryConfig[categoryKey];
             const isActive = activeCategory === categoryKey;
@@ -134,33 +135,40 @@ export default function MaterialsSection() {
               <Button
                 key={categoryKey}
                 onClick={() => setActiveCategory(categoryKey)}
-                className={`pixel-btn pixel-font text-[10px] gap-2 ${
+                className={`pixel-btn h-14 px-6 text-xs font-black gap-2 transition-all duration-300 ${
                   isActive 
-                    ? "bg-primary text-primary-foreground border-primary" 
-                    : "bg-card text-foreground border-foreground/20 hover:bg-muted"
+                    ? "bg-primary text-white scale-105 shadow-[6px_6px_0_rgba(0,0,0,0.2)]" 
+                    : "bg-white text-primary hover:bg-muted"
                 }`}
               >
-                <span className="text-lg">{config.emoji}</span>
+                <span className="text-2xl">{config.emoji}</span>
                 {config.name}
               </Button>
             );
           })}
         </div>
 
-        {/* Materials grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {/* Grid de Materiais - Animação suave na troca de categoria */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredMaterials.map((material, index) => (
             <div
               key={material.id}
-              className="animate-fade-in"
-              style={{ animationDelay: `${index * 0.05}s` }}
+              className="animate-in fade-in slide-in-from-bottom-4 duration-500"
+              style={{ animationDelay: `${index * 0.03}s` }}
             >
               <MaterialCard material={material} />
             </div>
           ))}
         </div>
 
+        {/* Mensagem de Encerramento */}
+        <div className="mt-20 text-center bg-edukhan-sky/10 border-4 border-dashed border-edukhan-sky/30 p-8 rounded-lg">
+          <p className="font-bold text-primary flex items-center justify-center gap-2">
+            Não encontrou o que queria doar? Entre em contato conosco! 
+            <ChevronRight className="w-5 h-5" />
+          </p>
+        </div>
       </div>
     </section>
-    )
+  );
 }
